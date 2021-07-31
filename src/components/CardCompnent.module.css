@@ -1,0 +1,88 @@
+.card {
+    box-shadow: 0 0 5px darkgrey;
+    width: 22%;
+    background-color: #EAEDED;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.swiper-slide {
+    width: 100% !important;
+}
+
+.card ul li {
+    background-color: #EAEDED;
+}
+
+.card-image-div {
+    display: flex;
+    border-bottom: 1px solid grey !important;
+}
+
+.card-img {
+    max-height: 200px;
+}
+
+.card > .btn {
+    background-color: #4e51bf !important;
+}
+
+.card p {
+    color: black !important;
+}
+
+.discount {
+    background-color: #4e51bf !important;
+    color: white !important;
+    position: absolute;
+    font-size: 1.2em;
+    top: 10px;
+    right: 75% !important;
+    padding: 0 8px;
+    border-radius: 1em;
+}
+
+.price {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.mrp {
+    color: rgb(128,128,128);
+    font-size: 0.8em !important;
+    font-weight: normal;
+    text-decoration: line-through;
+}
+
+.card:hover {
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+    transform: translate(-0.5%, -0.5%);
+    box-shadow: 0 0 10px darkgrey;
+    color: #4e51bf !important;
+}
+
+.searchCard {
+    box-sizing: border-box;
+    margin: 1%;
+}
+
+@media (min-width: 992px) {
+    .searchCard{
+        width: calc(94% / 3);/*(100 - 2*3) / 3*/
+    }
+}
+
+/*x-large*/
+@media (min-width: 1200px) {
+    .searchCard {
+        width: 23%;
+    }
+}
+
+/*xx-large*/
+@media (min-width: 1400px) {
+   .searchCard {
+        width: 23%;
+    }
+}
