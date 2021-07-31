@@ -28,3 +28,10 @@
 .table-div {
     /*box-shadow: 0 0 15px lightgrey;*/
 }
+
+.mrp {
+    color: rgb(128,128,128);
+    font-size: 0.8em !important;
+    font-weight: normal;
+    text-decoration: line-through;
+}

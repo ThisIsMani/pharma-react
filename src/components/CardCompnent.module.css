@@ -3,7 +3,7 @@
     width: 22%;
     background-color: #EAEDED;
     border-radius: 0.5rem;
-    overflow: hidden;
+    overflow: hidden !important;
 }
 
 .swiper-slide {
@@ -20,7 +20,9 @@
 }
 
 .card-img {
-    max-height: 200px;
+    /*height: 200px;*/
+    aspect-ratio: 16/9;
+    /*border-radius: 5rem !important;*/
 }
 
 .card > .btn {

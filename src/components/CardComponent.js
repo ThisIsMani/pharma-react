@@ -13,9 +13,9 @@ const CardComponent = (props) => {
     return (
         <Card className={styles.card + ` text-center ${styles[props.className]}`} onClick={() => cardClickHander(props.data.id)}>
             {props.data.discount !== '0' && <span className={styles.discount}>{`-${props.data.discount}%`}</span>}
-            {/*<div className="card-image-div">*/}
-                <Card.Img className="card-img <%= 'main-image-' + data.id %>" src={props.data.image}/>
-            {/*</div>*/}
+            <div className={styles["card-image-div"]}>
+                <Card.Img className={styles["card-img"]} src={props.data.image}/>
+            </div>
             <div className="card-body">
                 <h5 className="card-title">
                     {props.data.title}

@@ -26,8 +26,8 @@ const ProductDetails = () => {
                         <div className={styles["details-price"] + " text-center m-3"}>
                             <span>Price: </span>
                             {productDetails.discount !== '0' &&
-                            <span className="mrp">&#8377;{' ' + productDetails.mrp}</span>}
-                            &#8377;{' ' + productDetails.price + ' / ' + productDetails.weight}
+                            <span className={styles.mrp}>&#8377;{productDetails.mrp}</span>}
+                            {" "} &#8377;{productDetails.price + ' / ' + productDetails.weight}
                         </div>
                     </div>
                     <div className="col-lg-7">
