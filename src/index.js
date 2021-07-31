@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import {BrowserRouter} from "react-router-dom";
 
-window.$server = ''
+window.$server = 'http://localhost:3001'
 
 ReactDOM.render(
   <BrowserRouter>

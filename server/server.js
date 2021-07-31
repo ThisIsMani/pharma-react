@@ -30,9 +30,6 @@ const generator = new idGenerator.Generator();
 
 const PORT = process.env.PORT || 3001;
 
-const buildPath = path.join(__dirname, '..', 'build');
-app.use(express.static(buildPath));
-
 app.use(cors())
 
 app.get('/product/:id', async (req, res) => {
