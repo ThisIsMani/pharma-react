@@ -24,13 +24,15 @@ const bucket = admin.storage().bucket();
 
 const csrfMiddleware = csrf({cookie: true});
 
-const port = process.env.PORT || 3000;
 const app = express();
 const generator = new idGenerator.Generator();
 
 const PORT = process.env.PORT || 3001;
 
 app.use(cors())
+
+const buildPath = path.join(__dirname, '..', 'build');
+app.use(express.static(buildPath));
 
 app.get('/product/:id', async (req, res) => {
     const id = req.params.id;
