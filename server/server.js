@@ -1,17 +1,17 @@
 const express = require('express');
 const admin = require('firebase-admin');
 const path = require('path');
-const csrf = require('csurf');
-const bodyParser = require("body-parser");
-const idGenerator = require("firebase-auto-ids")
-const os = require('os')
-const fs = require('fs')
-const Busboy = require('busboy');
-let UUID = require('uuid-v4');
+// const csrf = require('csurf');
+// const bodyParser = require("body-parser");
+// const idGenerator = require("firebase-auto-ids")
+// const os = require('os')
+// const fs = require('fs')
+// const Busboy = require('busboy');
+// let UUID = require('uuid-v4');
 const cors = require('cors')
 
 const serviceAccountKey = require('./serviceAccountKey.json');
-const cookieParser = require('cookie-parser');
+// const cookieParser = require('cookie-parser');
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccountKey),
@@ -20,19 +20,27 @@ admin.initializeApp({
 });
 
 const db = admin.firestore();
-const bucket = admin.storage().bucket();
+// const bucket = admin.storage().bucket();
 
-const csrfMiddleware = csrf({cookie: true});
+// const csrfMiddleware = csrf({cookie: true});
 
 const app = express();
-const generator = new idGenerator.Generator();
+// const generator = new idGenerator.Generator();
 
 const PORT = process.env.PORT || 3001;
 
 app.use(cors())
 
-const buildPath = path.join(__dirname, '..', 'build');
-app.use(express.static(buildPath));
+app.use(express.static(path.resolve(__dirname, '../client/build')));
+
+app.get('/products', async (req, res) => {
+    const allProducts = [];
+    const casSearch = await db.collection('cards').get();
+    casSearch.forEach((doc) => {
+        allProducts.push(doc.data());
+    });
+    res.json({allProducts});
+})
 
 app.get('/product/:id', async (req, res) => {
     const id = req.params.id;
@@ -63,6 +71,10 @@ app.get('/topProducts', async (req, res) => {
     });
     res.json({topProducts: searchResultCards})
 })
+
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
+});
 
 app.listen(PORT, () => {
     console.log(`Server listening on ${PORT}`);
