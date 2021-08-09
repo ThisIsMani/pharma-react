@@ -1,0 +1,52 @@
+.productsBar {
+    border-radius: 0.5rem;
+    box-shadow: 0 0 10px lightgrey;
+    padding: 0.5rem 1rem 1.5rem 1rem;
+}
+
+.top-products-text {
+    font-family: 'Oswald', serif;
+    font-weight: bold;
+    margin: 1rem;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}
+
+.seeMoreBtn {
+    font-family: arial, serif;
+    font-size: 1rem;
+    background-color: #4E51BFFF;
+    color: white;
+    margin: 0 0 0 1rem;
+    border-radius: 2rem;
+}
+
+.seeMoreBtn:hover {
+    color: white;
+    transform: translate(-0.5%, -0.5%);
+    transition: all 0.2s ease-out;
+    box-shadow: 0 0 5px grey;
+}
+
+.swiper-father {
+    position: relative;
+}
+
+.swiper-wrapper {
+    padding: 1rem !important;
+}
+
+.swiper-button-prev, .swiper-button-next {
+    color: black !important;
+}
+
+.swiper-container {
+    width: 92%;
+    padding: 1rem !important;
+}
+
+@media (min-width: 576px) {
+    .top-products-text {
+        font-size: 2rem;
+    }
+}

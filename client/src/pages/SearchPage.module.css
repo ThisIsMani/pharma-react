@@ -1,0 +1,16 @@
+.searchResultsText {
+    margin: 16px;
+    font-size: 2rem;
+    display: block;
+    font-weight: 300 !important;
+}
+
+.searchQueryHeading {
+    font-size: 2.25rem;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.cardResults {
+    display: flex;
+}

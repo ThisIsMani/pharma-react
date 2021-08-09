@@ -1,0 +1,13 @@
+.nav-link {
+    /*display: flex;*/
+    border: 1px solid black;
+    color: black;
+    flex-basis: 0;
+    text-decoration: none;
+}
+
+.active, .nav-link:hover {
+    color: white;
+    background-color: #4e51bf;
+}
+
