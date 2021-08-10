@@ -1,6 +1,6 @@
 import {Fragment} from "react";
 import ProductNavbar from "../components/ProductNavbar";
-import {Redirect, Route, Switch, useParams, useRouteMatch} from "react-router-dom";
+import {Redirect, Route, Switch, useRouteMatch} from "react-router-dom";
 import {useEffect, useState} from "react";
 import Products from "../components/Products";
 
@@ -22,16 +22,6 @@ function ProductsPage() {
             })
     }, [])
 
-    // let routes = [];
-    // for (let ch = 97; ch <= 122; ch++) {
-    //     routes.push(
-    //         <Route path={path + '/' + String.fromCharCode(ch)} key={String.fromCharCode(ch)}>
-    //             <Products data={getData(String.fromCharCode(ch), allCards)}/>
-    //         </Route>
-    //     )
-    // }
-    // console.log(routes)
-    const params = useParams();
     return (
         <Fragment>
             <ProductNavbar url={url}/>

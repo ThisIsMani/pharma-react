@@ -1,0 +1,11 @@
+body {
+    display: flex;
+    font-size: 1.1em;
+    min-height: 100vh;
+    max-width: 100vw;
+    align-items: center;
+}
+
+/*.ui-sortable-helper {*/
+/*    display: table;*/
+/*}*/

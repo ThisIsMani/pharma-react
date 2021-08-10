@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Top Products</title>
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+              crossorigin="anonymous">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+        <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+        <link rel="stylesheet" href="css/adminStyles.css"/>
+    </head>
+    <body class="justify-content-center row">
+        <div class="col-6 row">
+            <table id="table" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th class="col-4" scope="col">Cas Number</th>
+                        <th class="col-7">Title</th>
+                        <th class="col-1">Options</th>
+                    </tr>
+                </thead>
+                <tbody id="sortable">
+                    <% for (data of topCardsArray) { %>
+                        <tr style="cursor: move;" class="<%='tr-' + data.id%>">
+                            <th class="d-none index"><%= data.id %></th>
+                            <th><%= data.cas %></th>
+                            <td><%= data.title %></td>
+                            <td><button class="btn btn-danger <%='del-' + data.id%>">Delete</button></td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+
+            <form class="col-4 text-center" action="/adminpanel">
+                <button type="submit" class="btn btn-danger">Go Back</button>
+            </form>
+
+            <form class="col-4 text-center" action="/addTopCardsPage">
+                <button type="submit" class="btn btn-secondary">Add Products</button>
+            </form>
+
+            <form class="col-4 text-center">
+                <button id="save-button" type="button" disabled class="btn btn-success">Save</button>
+            </form>
+        </div>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+                integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+                crossorigin="anonymous"></script>
+
+        <script>
+            let fixHelperModified = function(e, tr) {
+                $('#save-button').removeAttr('disabled')
+                var $originals = tr.children();
+                var $helper = tr.clone();
+                $helper.children().each(function(index)
+                {
+                    $(this).width($originals.eq(index).width());
+                });
+                return $helper;
+            };
+
+            $("#sortable").sortable({
+                helper: fixHelperModified,
+            });
+
+            $('[class^="btn btn-danger del-"]').click(function () {
+                let className = this.className.replace('btn btn-danger del', '.tr')
+                $(className).remove();
+                $('#save-button').removeAttr('disabled')
+            })
+
+            $("#save-button").click( () => {
+                let tableInfo = Array.prototype.map.call(document.querySelectorAll('tbody tr .index'), function (tr) {
+                    return tr.innerHTML;
+                });
+                if (confirm("Do you want to save?")) {
+                    const xsrfToken = document.cookie
+                        .split('; ')
+                        .find(row => row.startsWith('XSRF-TOKEN='))
+                        .split('=')[1];
+
+                    axios.post('/saveTopCards', tableInfo, {
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'CSRF-Token': xsrfToken,
+                        }
+                    }).then((response) => {
+                        window.location = "/adminpanel";
+                    }).catch((error) => {
+                        console.log(error);
+                    })
+                }
+            })
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
+                integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
+                crossorigin="anonymous"></script>
+    </body>
+</html>

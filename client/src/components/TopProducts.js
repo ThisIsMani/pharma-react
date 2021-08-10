@@ -6,6 +6,7 @@ import 'swiper/swiper-bundle.css';
 import CardComponent from "./CardComponent";
 import {Fragment, useEffect, useState} from "react";
 import SwiperCore, {Navigation} from "swiper";
+import {Link} from "react-router-dom";
 
 
 SwiperCore.use(Navigation)
@@ -34,7 +35,9 @@ const TopProducts = () => {
         <Fragment>
             <div className={`container border my-3 ${styles.belowNav} ${styles.productsBar}`}>
                 <h2 className={"d-flex " + styles['top-products-text']}>Top Products
-                    <button className={"btn f-flex " + styles.seeMoreBtn}>See More</button>
+                    <Link to="/products">
+                        <button className={"btn f-flex " + styles.seeMoreBtn}>See More</button>
+                    </Link>
                 </h2>
                 <div className={styles['swiper-father']}>
                     <Swiper className={styles['swiper-container']}

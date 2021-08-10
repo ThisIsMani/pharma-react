@@ -22,7 +22,7 @@
 .card-img {
     /*height: 200px;*/
     aspect-ratio: 16/9;
-    /*border-radius: 5rem !important;*/
+    border-radius: 0 !important;
 }
 
 .card > .btn {

@@ -11,7 +11,6 @@ import SearchPage from "./pages/SearchPage";
 import ProductDetails from "./pages/ProductDetails";
 import ProductsPage from "./pages/ProductsPage";
 import ScrollToTop from "./components/ScrollToTop";
-import Products from "./components/Products";
 
 function App() {
     return (

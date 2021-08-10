@@ -5,7 +5,6 @@ import styles from './ProductNavbar.module.css';
 
 function ProductNavbar(props) {
     let navBar = [];
-    let { url } = useRouteMatch();
     navBar.push(
         <NavLink to={`${props.url}/all`} activeClassName={styles.active} className={styles['nav-link'] + ' text-center m-1 col-1'}
                  key={'all'}>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Login</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+              crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <link rel="stylesheet" href="/css/adminStyles.css"/>
+        <script
+                src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"
+                defer
+        ></script>
+        <script
+                src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"
+                defer
+        ></script>
+        <script
+                src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"
+                defer
+        ></script>
+    </head>
+    <body class="justify-content-center row">
+        <div class="col-4 row flex-wrap shadow rounded-3 pt-3">
+            <form id="login">
+                <div class="col-12 row m-3">
+                    <label class="col-3 form-label">Email</label>
+                    <input class="col form-control" type="text" name="login"/>
+                    <div class="col-1"></div>
+                </div>
+                <div class="col-12 row m-3">
+                    <label class="col-3 form-label">Password</label>
+                    <input class="col form-control" type="password" name="password"/>
+                    <div class="col-1"></div>
+                </div>
+                <div class="col-12 text-center m-3">
+                    <button class="btn btn-primary">Log in</button>
+                </div>
+            </form>
+        </div>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+                integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+                crossorigin="anonymous"></script>
+
+        <script>
+            window.addEventListener("DOMContentLoaded", () => {
+                let firebaseConfig = {
+                    apiKey: "AIzaSyDsDM0aLgVxjVayDlqJ0ovNR-XBX8ToRQg",
+                    authDomain: "pharma-9e4a8.firebaseapp.com",
+                    databaseURL: "https://pharma-9e4a8-default-rtdb.asia-southeast1.firebasedatabase.app",
+                    projectId: "pharma-9e4a8",
+                    storageBucket: "pharma-9e4a8.appspot.com",
+                    messagingSenderId: "107108290646",
+                    appId: "1:107108290646:web:ddf0c400f176e6528b6bf7",
+                    measurementId: "G-N8W06P5Q6J"
+                };
+                // Initialize Firebase
+                firebase.initializeApp(firebaseConfig);
+
+                firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE)
+
+                document
+                    .getElementById("login")
+                    .addEventListener("submit", (event) => {
+                        event.preventDefault();
+                        const login = event.target.login.value;
+                        const password = event.target.password.value;
+
+                        firebase
+                            .auth()
+                            .signInWithEmailAndPassword(login, password)
+                            .then(({user}) => {
+                                return user.getIdToken().then((idToken) => {
+                                    return fetch("/sessionLogin", {
+                                        method: "POST",
+                                        headers: {
+                                            Accept: "application/json",
+                                            "Content-Type": "application/json",
+                                            "CSRF-Token": Cookies.get("XSRF-TOKEN"),
+                                        },
+                                        body: JSON.stringify({idToken}),
+                                    });
+                                });
+                            })
+                            .then(() => {
+                                return firebase.auth().signOut();
+                            })
+                            .then(() => {
+                                window.location.assign("/adminpanel");
+                            });
+                        return false;
+                    });
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
+                integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
+                crossorigin="anonymous"></script>
+
+    </body>
+</html>
