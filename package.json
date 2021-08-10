@@ -4,7 +4,7 @@
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "index.js",
   "scripts": {
-    "start" : "cd server && npm install && nodemon server.js",
+    "start" : "cd server && npm install && node server.js",
     "build": "cd client && npm install && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
