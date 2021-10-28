@@ -21,7 +21,7 @@
 
 .card-img {
     /*height: 200px;*/
-    aspect-ratio: 16/9;
+    aspect-ratio: 1.6;
     border-radius: 0 !important;
 }
 

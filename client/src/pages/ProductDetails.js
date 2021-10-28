@@ -50,15 +50,21 @@ const ProductDetails = () => {
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th className="product-details-heading">Purity Percentage</th>
+                                        <th className="product-details-heading">Purity</th>
                                         <td>
-                                            {productDetails.purity}
+                                            {productDetails.purity}%
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th className="product-details-heading">Chemical State</th>
+                                        <th className="product-details-heading">Description</th>
                                         <td>
-                                            {productDetails.state}
+                                            {productDetails.description}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th className="product-details-heading">Available Quantity</th>
+                                        <td>
+                                            {productDetails.available}
                                         </td>
                                     </tr>
                                     <tr>
@@ -72,9 +78,9 @@ const ProductDetails = () => {
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th className="product-details-heading">Description</th>
+                                        <th className="product-details-heading">Chemical Name</th>
                                         <td>
-                                            {productDetails.description}
+                                            {productDetails.chemName}
                                         </td>
                                     </tr>
                                 </tbody>

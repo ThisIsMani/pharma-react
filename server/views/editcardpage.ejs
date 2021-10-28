@@ -21,8 +21,7 @@
             <form class="row flex-wrap gx-5 gy-4" action="createcard" method="POST">
                 <div class="col-12">
                     <label class="form-label" for="title">Title:</label>
-                    <input required class="form-control" type="text" name="title" id="title"
-                           value="<%= cardResult.title %>">
+                    <input required class="form-control" type="text" name="title" id="title" value="<%= cardResult.title %>">
                 </div>
 
                 <div class="col-3">
@@ -49,15 +48,19 @@
                 </div>
 
                 <div class="col-3">
+                    <label class="form-label" for="available">Available Quantity:</label>
+                    <input required class="form-control" type="text" name="available" id="available" value="<%= cardResult.available %>">
+                </div>
+
+                <div class="col-3">
                     <label class="form-label" for="expiry">Expiry Date:</label>
                     <input required class="form-control" type="date" name="expiry" id="expiry"
                            value="<%= cardResult.expiry.replace(/^(\d{1,2})-(\d{1,2})-(\d{4})$/, "$3-$2-$1") %>">
                 </div>
 
                 <div class="col-3">
-                    <label class="form-label" for="state">Compound State:</label>
-                    <input required class="form-control" type="text" name="state" id="state"
-                           value="<%= cardResult.state %>">
+                    <label class="form-label" for="description">Description:</label>
+                    <input required class="form-control" type="text" name="description" id="description" value="<%= cardResult.description %>">
                 </div>
 
                 <div class="col-2">
@@ -72,10 +75,11 @@
                            value="<%= cardResult.city %>">
                 </div>
 
+
                 <div class="col-12">
-                    <label class="form-label" for="description">Description:</label>
-                    <textarea required type="text" class="form-control" rows="5" id="description"
-                              name="description"><%= cardResult.description %></textarea>
+                    <label class="form-label" for="chemName">Chemical Name:</label>
+                    <textarea required type="text" class="form-control" rows="5" id="chemName"
+                    name="chemName"><%= cardResult.chemName %></textarea>
                 </div>
 
                 <div class="col-12">

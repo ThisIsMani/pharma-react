@@ -23,6 +23,7 @@ const CardComponent = (props) => {
             </div>
             <ul className="list-group list-group-flush">
                 <li className="list-group-item">CAS No.: {props.data.cas}</li>
+                <li className="list-group-item">Available: {props.data.available}</li>
                 <li className={styles.price + ' list-group-item'}>
                     {props.data.discount !== '0' && <span className={styles.mrp}>&#8377;{props.data.mrp}</span>}
                     &nbsp;&#8377;{props.data.price + '/' + props.data.weight}
