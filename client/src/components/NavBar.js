@@ -19,7 +19,7 @@ function NavBarMain() {
     history = useHistory();
 
     return (
-        <Navbar className="navbar navbar-light navbar-expand-md bg-dark fixed-top py-0">
+        <Navbar className={"navbar navbar-light navbar-expand-md fixed-top py-0 " + styles["navbar-container"]}>
             <div className="container-fluid row px-0 flex-wrap g-0 justify-content-start justify-content-md-center"
                  id="navBar">
                 {/*<button className="navbar-toggler navbar-dark col-1 px-0 m-3" type="button" data-bs-toggle="collapse"*/}
@@ -35,7 +35,7 @@ function NavBarMain() {
                 <div className="navbar-nav col-10 col-md-7 col-xl-4 col-xxl-5 mx-4 searchBarNav">
                     <form className="input-group" onSubmit={searchHandler}>
                         <input type="search" className="form-control" name="q" ref={searchFormRef} placeholder="Search" id="tempForLabel"/>
-                        <button className="btn btn-outline-light" id="searchBtn">
+                        <button className="btn btn-outline-dark" id={styles["searchBtn"]}>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                  className="bi bi-search" viewBox="0 0 16 16">
                                 <path

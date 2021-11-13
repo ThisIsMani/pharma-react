@@ -1,6 +1,7 @@
 import styles from './CardComponent.module.css';
 import {Card} from "react-bootstrap";
 import {useHistory} from "react-router-dom";
+import {useState} from "react";
 
 let history;
 
@@ -8,16 +9,23 @@ function cardClickHander(id) {
     history.push('/product/' + id)
 }
 
+
 const CardComponent = (props) => {
+    const [truncate, setTruncate] = useState("text-truncate");
     history = useHistory()
     return (
-        <Card className={styles.card + ` text-center ${styles[props.className]}`} onClick={() => cardClickHander(props.data.id)}>
+        <Card className={styles.card + ` text-center ${styles[props.className]}`}
+              onClick={() => cardClickHander(props.data.id)}
+              data-bs-toggle="tooltip" data-bs-placement="top" title={props.data.title}
+              onMouseEnter={() => setTruncate("")}
+              onMouseLeave={() => setTruncate("text-truncate")}
+        >
             {props.data.discount !== '0' && <span className={styles.discount}>{`-${props.data.discount}%`}</span>}
             <div className={styles["card-image-div"]}>
                 <Card.Img className={styles["card-img"]} src={props.data.image}/>
             </div>
-            <div className="card-body">
-                <h5 className="card-title">
+            <div className={"card-body " + styles["card-body"]}>
+                <h5 className={"card-title " + styles["card-title"]}>
                     {props.data.title}
                 </h5>
             </div>

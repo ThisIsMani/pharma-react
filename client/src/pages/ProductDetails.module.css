@@ -8,13 +8,23 @@
     font-size: 1.5em;
 }
 
+.product-details-text {
+    /*margin-left: 1rem;*/
+    /*text-align: center;*/
+    box-shadow: 0 0 15px lightgrey;
+    border-radius: 2rem;
+    padding: 1rem 1rem 0 1rem;
+}
+
 .display-img {
     /*padding: 1.5%;*/
-    border-radius: 0.5rem;
+    border-radius: 2rem;
+    padding: 1rem;
     box-shadow: 0 0 15px lightgrey;
 }
 
 .product-title {
+    text-align: center;
     font-family:'Arial', sans-serif;
     /*border-bottom: 1px solid lightgrey;*/
 }
@@ -22,10 +32,11 @@
     border:1px solid lightgrey ;
     padding: 50px;
     box-shadow: 0 0 15px lightgrey;
-    border-radius: 0.5rem;
+    border-radius: 2rem;
 }
 
 .table-div {
+    /*text-align: start;*/
     /*box-shadow: 0 0 15px lightgrey;*/
 }
 

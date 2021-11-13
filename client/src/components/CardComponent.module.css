@@ -1,9 +1,17 @@
 .card {
+    transition: all 0.3s ease-in-out;
+    /*transition: height 2s ease-out;*/
     box-shadow: 0 0 5px darkgrey;
     width: 22%;
     background-color: #EAEDED;
     border-radius: 0.5rem;
     overflow: hidden !important;
+}
+
+.card-title {
+    /*height: 1em;*/
+    /*line-height: 1em;*/
+    text-overflow: ellipsis;
 }
 
 .swiper-slide {
@@ -14,14 +22,22 @@
     background-color: #EAEDED;
 }
 
+.card-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .card-image-div {
     display: flex;
     border-bottom: 1px solid grey !important;
 }
 
 .card-img {
-    /*height: 200px;*/
-    aspect-ratio: 1.6;
+    height: 200px;
+    width: 100%;
+    object-fit: scale-down;
+    /*aspect-ratio: 1.6;*/
     border-radius: 0 !important;
 }
 
@@ -58,10 +74,25 @@
 
 .card:hover {
     cursor: pointer;
-    transition: all 0.2s ease-out;
-    transform: translate(-0.5%, -0.5%);
-    box-shadow: 0 0 10px darkgrey;
+    transform: scale(1.05);
+    box-shadow: 0 0 30px darkgrey;
     color: #4e51bf !important;
+}
+
+.card-title {
+    display: block;
+    text-overflow: ellipsis;
+    max-height: 1.2em !important;
+    -webkit-box-orient: vertical;
+    word-break: break-word !important;
+    overflow: auto;
+    transition: max-height 0.3s ease-in;
+}
+
+.card:hover .card-title {
+    overflow: visible;
+    max-height: 2.4em !important;
+    transition: max-height 0.3s ease-out;
 }
 
 .searchCard {

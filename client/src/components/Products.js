@@ -9,7 +9,7 @@ function getData(alphabet, allCards) {
     console.log(alphabet)
     let elementArray = [];
     for (let element of allCards) {
-        if (element.titleLower.charAt(0) === alphabet || element.casLower.charAt(0) === alphabet) {
+        if (element.titleLower.charAt(0) === alphabet || element.cas.charAt(0) === alphabet) {
             elementArray.push(element);
         }
     }
@@ -24,8 +24,8 @@ function Products(props) {
     }
     return (
         <Fragment>
-            <div className={'container d-flex flex-wrap'}>
-                {cards.length !== 0 ? cards : <h2>No Cards</h2>}
+            <div className={'container d-flex flex-wrap rounded-2'}>
+                {cards.length !== 0 ? cards : <h2 className={"pt-3 pb-2 text-center col-12"}>No Products</h2>}
             </div>
         </Fragment>
     )

@@ -10,7 +10,7 @@ const ProductDetails = () => {
     const [productDetails, setProductDetais] = useState({});
 
     useEffect(() => {
-        fetch(window.$server + '/product/' + id)
+        fetch(window.$server + '/productDetails/' + id)
             .then((res) => res.json())
             .then(data => {
                 setProductDetais(data.productDetails);
@@ -30,7 +30,7 @@ const ProductDetails = () => {
                             {" "} &#8377;{productDetails.price + ' / ' + productDetails.weight}
                         </div>
                     </div>
-                    <div className="col-lg-7">
+                    <div className={"col-lg-7 " + styles["product-details-text"]}>
                         <h1 className={styles["product-title"] + " m-1 pb-2"}>
                             {productDetails.title}
                         </h1>

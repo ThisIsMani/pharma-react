@@ -1,5 +1,5 @@
 .productsBar {
-    border-radius: 0.5rem;
+    border-radius: 2rem;
     box-shadow: 0 0 10px lightgrey;
     padding: 0.5rem 1rem 1.5rem 1rem;
 }
@@ -41,6 +41,7 @@
 }
 
 .swiper-container {
+    overflow: visible!important;
     width: 92%;
     padding: 1rem !important;
 }

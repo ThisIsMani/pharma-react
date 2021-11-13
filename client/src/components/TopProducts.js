@@ -29,8 +29,6 @@ const TopProducts = () => {
             })
     }, [])
 
-    console.log(cards)
-
     return (
         <Fragment>
             <div className={`container border my-3 ${styles.belowNav} ${styles.productsBar}`}>

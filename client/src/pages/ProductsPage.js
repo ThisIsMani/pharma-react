@@ -10,7 +10,7 @@ function ProductsPage() {
     const [allCards, setAllCards] = useState([]);
 
     useEffect(() => {
-        fetch(window.$server + '/products')
+        fetch(window.$server + '/productDetails')
             .then((res) => res.json())
             .then(data => {
                 const tempCards = []

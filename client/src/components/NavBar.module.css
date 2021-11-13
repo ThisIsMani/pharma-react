@@ -9,7 +9,7 @@
 .nav-link {
     display: block;
     text-decoration: none;
-    color: white !important;
+    color: black !important;
     text-transform: uppercase;
     padding: 0.5vh;
 }
@@ -21,6 +21,17 @@
     cursor: pointer;
 }
 
-#searchBtn:hover {
-    background-color: #4e51bf !important;
+#searchBtn {
+    /*border: 1px solid grey;*/
+    color: black;
+}
+
+#searchBtn {
+    background: #F9F7F7 !important;
+}
+
+.navbar-container {
+    background: #3F72AF;
+    color: black;
+    /*border-bottom: 1px solid grey;*/
 }

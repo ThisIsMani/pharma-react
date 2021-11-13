@@ -9,7 +9,6 @@ const fs = require("fs");
 const Busboy = require('busboy');
 let UUID = require('uuid-v4');
 
-// const cors = require('cors')
 
 const serviceAccountKey = require('./serviceAccountKey.json');
 const cookieParser = require('cookie-parser');
@@ -28,10 +27,11 @@ const csrfMiddleware = csrf({cookie: true});
 const PORT = process.env.PORT || 3001;
 const app = express();
 const generator = new idGenerator.Generator();
-app.use(express.static(path.join(__dirname, 'public')))
 
 
-// app.use(cors())
+// app.use(express.static(path.join(__dirname, 'public')))
+const cors = require('cors')
+app.use(cors())
 
 app.use(express.static(path.resolve(__dirname, '../client/build')));
 
@@ -427,7 +427,7 @@ app.get("/sessionLogout", (req, res) => {
 });
 
 
-app.get('/products', async (req, res) => {
+app.get('/productDetails', async (req, res) => {
     const allProducts = [];
     const casSearch = await db.collection('cards').get();
     casSearch.forEach((doc) => {
@@ -436,7 +436,7 @@ app.get('/products', async (req, res) => {
     res.json({allProducts});
 })
 
-app.get('/product/:id', async (req, res) => {
+app.get('/productDetails/:id', async (req, res) => {
     const id = req.params.id;
     const cardResult = await (await db.collection('cards').doc(id).get()).data();
     res.json({productDetails: cardResult})
@@ -445,7 +445,7 @@ app.get('/product/:id', async (req, res) => {
 app.get('/search', async (req, res) => {
     const q = req.query.q;
     const searchResultCards = [];
-    const casSearch = await db.collection('cards').where('casLower', '==', q.toLowerCase()).get();
+    const casSearch = await db.collection('cards').where('cas', '==', q.toLowerCase()).get();
     const titleSearch = await db.collection('cards').where('titleLower', '==', q.toLowerCase()).get();
     casSearch.forEach((doc) => {
         searchResultCards.push(doc.data());
