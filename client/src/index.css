@@ -16,7 +16,7 @@ body {
     -moz-osx-font-smoothing: grayscale;
     font-family: "Roboto", sans-serif !important;
     max-width: 100vw !important;
-    background: #E1E7F2;
+    background: var(--primary);
 }
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
