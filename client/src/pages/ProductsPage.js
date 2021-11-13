@@ -3,7 +3,7 @@ import ProductNavbar from "../components/ProductNavbar";
 import {Redirect, Route, Switch, useRouteMatch} from "react-router-dom";
 import {useEffect, useState} from "react";
 import Products from "../components/Products";
-
+import styles from "./ProductsPage.module.css";
 
 function ProductsPage() {
     let {path, url} = useRouteMatch();
@@ -25,7 +25,7 @@ function ProductsPage() {
     return (
         <Fragment>
             <ProductNavbar url={url}/>
-            <div className="container border my-3">
+            <div className={"container border my-3 py-3 " + styles["products-container"]}>
                 <Switch>
                     <Route exact path={path}>
                         <Redirect to={path + '/all'}/>

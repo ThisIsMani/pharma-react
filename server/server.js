@@ -29,9 +29,9 @@ const app = express();
 const generator = new idGenerator.Generator();
 
 
-// app.use(express.static(path.join(__dirname, 'public')))
-const cors = require('cors')
-app.use(cors())
+app.use(express.static(path.join(__dirname, 'public')))
+// const cors = require('cors')
+// app.use(cors())
 
 app.use(express.static(path.resolve(__dirname, '../client/build')));
 
@@ -93,8 +93,8 @@ app.post("/createcard", async (req, res) => {
 
                 fileData = {filepath: newfilepath, mimetype}
             });
-            busboy.on('field', function (fieldname, val, fieldnameTruncated, valTruncated, encoding, mimetype) {
-                fields[fieldname] = val;
+            busboy.on('field', function (fieldName, val) {
+                fields[fieldName] = val;
             });
             busboy.on('finish', function () {
                 bucket.upload(fileData.filepath, {
@@ -113,12 +113,12 @@ app.post("/createcard", async (req, res) => {
                     });
 
                 function createDocument(uploadedFile) {
-                    db.collection('cards').doc(id).set(fields).then(newCard => {
+                    db.collection('cards').doc(id).set(fields).then(() => {
                         db.collection('cards').doc(id).set({
                             id: id,
                             fileExt: ext,
                             image: `https://firebasestorage.googleapis.com/v0/b/${bucket.name}/o/${uploadedFile.name}?alt=media&token=${uuid}`,
-                        }, {merge: true}).then(res => {
+                        }, {merge: true}).then(() => {
                             console.log('Card Added!');
                         })
                     })
@@ -129,7 +129,7 @@ app.post("/createcard", async (req, res) => {
             });
             req.pipe(busboy);
         })
-        .catch((error) => {
+        .catch(() => {
             res.redirect("/login");
         });
 });
@@ -148,7 +148,7 @@ app.get("/allcards", function (req, res) {
             });
             res.render("allcards", {searchResultCards});
         })
-        .catch((error) => {
+        .catch(() => {
             res.redirect("/login");
         });
 });
@@ -164,7 +164,7 @@ app.get("/updatecard/:id", async (req, res) => {
             let cardResult = await (await db.collection('cards').doc(id).get()).data();
             res.render("updatecard", {cardResult});
         })
-        .catch((error) => {
+        .catch(() => {
             res.redirect("/login");
         });
 })
@@ -180,7 +180,7 @@ app.get("/editcardpage/:id", async (req, res) => {
             let cardResult = await (await db.collection('cards').doc(id).get()).data();
             res.render("editcardpage", {cardResult});
         })
-        .catch((error) => {
+        .catch(() => {
             res.redirect("/login");
         });
 })
@@ -210,14 +210,12 @@ app.post("/editpost/:id", async (req, res) => {
 
                 fileData = {filepath: newfilepath, mimetype}
             });
-            busboy.on('field', function (fieldname, val, fieldnameTruncated, valTruncated, encoding, mimetype) {
+            busboy.on('field', function (fieldname, val) {
                 fields[fieldname] = val;
             });
             busboy.on('finish', async function () {
                 const cardData = (await db.collection('cards').doc(id).get()).data();
                 if (sawFile) {
-                    const fileName = cardData.id + cardData.fileExt;
-                    let delFile = admin.storage().bucket().file(fileName).delete();
 
                     bucket.upload(fileData.filepath, {
                             uploadType: 'media',
@@ -238,12 +236,12 @@ app.post("/editpost/:id", async (req, res) => {
                 }
 
                 function createDocument(uploadedFile) {
-                    db.collection('cards').doc(id).set(fields).then(newCard => {
+                    db.collection('cards').doc(id).set(fields).then(() => {
                         if (sawFile) {
                             db.collection('cards').doc(id).set({
                                 fileExt: ext,
                                 image: `https://firebasestorage.googleapis.com/v0/b/${bucket.name}/o/${uploadedFile.name}?alt=media&token=${uuid}`,
-                            }, {merge: true}).then(res => {
+                            }, {merge: true}).then(() => {
                                 console.log('Card Added!');
                                 updateTopCards()
                             })
@@ -251,7 +249,7 @@ app.post("/editpost/:id", async (req, res) => {
                             db.collection('cards').doc(id).set({
                                 fileExt: cardData.fileExt,
                                 image: cardData.image,
-                            }, {merge: true}).then(res => {
+                            }, {merge: true}).then(() => {
                                 console.log('Card Added!');
                                 updateTopCards()
                             })

@@ -17,6 +17,6 @@
 
 .active, .nav-link:hover {
     color: white;
-    background-color: #4e51bf;
+    background-color: var(--accent-2);
 }
 

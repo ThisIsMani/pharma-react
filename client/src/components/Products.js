@@ -24,7 +24,7 @@ function Products(props) {
     }
     return (
         <Fragment>
-            <div className={'container d-flex flex-wrap rounded-2'}>
+            <div className='container d-flex flex-wrap'>
                 {cards.length !== 0 ? cards : <h2 className={"pt-3 pb-2 text-center col-12"}>No Products</h2>}
             </div>
         </Fragment>

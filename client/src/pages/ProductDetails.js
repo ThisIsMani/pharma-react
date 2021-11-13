@@ -7,7 +7,18 @@ import TopProducts from "../components/TopProducts";
 const ProductDetails = () => {
     const params = useParams();
     const id = params.id;
-    const [productDetails, setProductDetais] = useState({});
+    const [productDetails, setProductDetais] = useState({
+        mrp: '...',
+        price: '...',
+        weight: '...',
+        cas: 'loading',
+        expiry: 'loading',
+        description: 'loading',
+        purity: '..',
+        available: 'loading',
+        city: 'loading',
+        chemName: 'loading',
+    });
 
     useEffect(() => {
         fetch(window.$server + '/productDetails/' + id)

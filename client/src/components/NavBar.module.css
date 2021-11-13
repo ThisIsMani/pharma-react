@@ -9,7 +9,7 @@
 .nav-link {
     display: block;
     text-decoration: none;
-    color: black !important;
+    color: white !important;
     text-transform: uppercase;
     padding: 0.5vh;
 }
@@ -17,8 +17,9 @@
 .nav-item:hover, .nav-item .active {
     overflow: hidden;
     border-radius: 1em;
-    background-color: #4e51bf !important;
+    background-color: var(--accent-2) !important;
     cursor: pointer;
+    box-shadow: 0 0 5px var(--accent-2);
 }
 
 #searchBtn {
@@ -27,11 +28,13 @@
 }
 
 #searchBtn {
-    background: #F9F7F7 !important;
+    background: var(--accent-1) !important;
 }
 
 .navbar-container {
-    background: #3F72AF;
+    background: var(--contrast);
+    /*background: rgb(29,40,54);*/
+    /*background: linear-gradient(180deg, rgba(29,40,54,1) 0%, rgba(53,95,146,1) 100%);*/
     color: black;
     /*border-bottom: 1px solid grey;*/
 }

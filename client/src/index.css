@@ -1,6 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@100;200;300;600&display=swap");
 
+:root {
+    --primary : #F9F7F7;
+    --contrast : #1C293A;
+    --accent-1 : #E1E7F2;
+    --accent-2 : #355F92;
+    --main-color : black;
+}
+
 body {
     padding-top: 11vh !important;
     margin: 0;
@@ -8,9 +16,8 @@ body {
     -moz-osx-font-smoothing: grayscale;
     font-family: "Roboto", sans-serif !important;
     max-width: 100vw !important;
-    background-color: #FAFAFA !important;
+    background: var(--accent-1);
 }
-
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

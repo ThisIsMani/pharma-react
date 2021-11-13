@@ -1,5 +1,5 @@
 import {Fragment} from "react";
-import {NavLink, useRouteMatch} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import styles from './ProductNavbar.module.css';
 
 

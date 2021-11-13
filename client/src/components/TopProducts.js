@@ -38,7 +38,7 @@ const TopProducts = () => {
                     </Link>
                 </h2>
                 <div className={styles['swiper-father']}>
-                    <Swiper className={styles['swiper-container']}
+                    <Swiper className={styles['swiper-container'] + " px-5"}
                             breakpoints={{
                                 0: {
                                     slidesPerView: 1,

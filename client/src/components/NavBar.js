@@ -35,7 +35,7 @@ function NavBarMain() {
                 <div className="navbar-nav col-10 col-md-7 col-xl-4 col-xxl-5 mx-4 searchBarNav">
                     <form className="input-group" onSubmit={searchHandler}>
                         <input type="search" className="form-control" name="q" ref={searchFormRef} placeholder="Search" id="tempForLabel"/>
-                        <button className="btn btn-outline-dark" id={styles["searchBtn"]}>
+                        <button className="btn btn-outline-light" id={styles["searchBtn"]}>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                  className="bi bi-search" viewBox="0 0 16 16">
                                 <path
@@ -45,7 +45,7 @@ function NavBarMain() {
                     </form>
                 </div>
 
-                <ul className="navbar-nav col-md-10 col-xl-5 col-xxl-4 my-2 d-none d-md-flex justify-content-around">
+                <ul className="navbar-nav col-md-10 col-xl-5 col-xxl-4 my-2 d-none d-md-flex ps-0 px-xl-5 justify-content-around">
                     <li className={styles['nav-item']}>
                         <NavLink to="/home" activeClassName={styles.active} className={styles['nav-link'] + ' px-3'}>Home</NavLink>
                     </li>
@@ -54,9 +54,6 @@ function NavBarMain() {
                     </li>
                     <li className={styles['nav-item']}>
                         <NavLink to="/to" activeClassName={styles.active} className={styles['nav-link'] + ' px-3'}>About</NavLink>
-                    </li>
-                    <li className={styles['nav-item']}>
-                        <NavLink to="/get" activeClassName={styles.active} className={styles['nav-link'] + ' px-3'}>Contact</NavLink>
                     </li>
                 </ul>
             </div>

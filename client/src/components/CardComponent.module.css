@@ -3,8 +3,8 @@
     /*transition: height 2s ease-out;*/
     box-shadow: 0 0 5px darkgrey;
     width: 22%;
-    background-color: #EAEDED;
-    border-radius: 0.5rem;
+    background-color: var(--accent-1);
+    border-radius: 1rem;
     overflow: hidden !important;
 }
 
@@ -18,8 +18,12 @@
     width: 100% !important;
 }
 
+.swiper-slide:hover {
+    box-shadow: 0 0 10px darkgrey !important;
+}
+
 .card ul li {
-    background-color: #EAEDED;
+    background-color: var(--accent-1);
 }
 
 .card-body {
@@ -50,7 +54,7 @@
 }
 
 .discount {
-    background-color: #4e51bf !important;
+    background-color: var(--accent-2) !important;
     color: white !important;
     position: absolute;
     font-size: 1.2em;
@@ -76,7 +80,7 @@
     cursor: pointer;
     transform: scale(1.05);
     box-shadow: 0 0 30px darkgrey;
-    color: #4e51bf !important;
+    color: var(--accent-2) !important;
 }
 
 .card-title {

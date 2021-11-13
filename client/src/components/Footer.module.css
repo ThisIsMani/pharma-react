@@ -1,7 +1,9 @@
 footer {
-    font-family: Roboto, sans-serif;
+    font-family: Montserrat,Roboto, sans-serif;
     line-height: 1.5;
-    background: #212529;
+    background: var(--contrast);
+    /*background: rgb(53,95,146);*/
+    /*background: radial-gradient(circle, rgba(53,95,146,1) 0%, rgba(29,40,54,1) 100%);*/
     margin-top: 20px;
     color: whitesmoke;
     padding: 0.8rem 0 1rem 0;
@@ -10,6 +12,16 @@ footer {
 .footer-container {
     padding: 0 20px;
     margin: 0 auto;
+}
+
+p > a {
+    text-decoration: none;
+    color: white;
+}
+
+p > a:hover {
+    text-decoration: underline;
+    color: white;
 }
 
 .itemsbm {
@@ -40,5 +52,6 @@ hr {
 }
 
 .footer-titles {
+    text-decoration: underline;
     font-family: "Oswald",sans-serif;
 }

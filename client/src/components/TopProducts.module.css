@@ -15,21 +15,26 @@
 .seeMoreBtn {
     font-family: arial, serif;
     font-size: 1rem;
-    background-color: #4E51BFFF;
+    background-color: var(--accent-2);
     color: white;
     margin: 0 0 0 1rem;
     border-radius: 2rem;
+    transition: all 0.2s ease-in;
 }
 
 .seeMoreBtn:hover {
     color: white;
-    transform: translate(-0.5%, -0.5%);
+    transform: scale(1.1);
     transition: all 0.2s ease-out;
-    box-shadow: 0 0 5px grey;
+    box-shadow: 0 0 10px var(--contrast);
 }
 
 .swiper-father {
     position: relative;
+}
+
+.swiper-slide {
+    box-shadow: 0 0 10px lightgrey;
 }
 
 .swiper-wrapper {
@@ -41,10 +46,11 @@
 }
 
 .swiper-container {
-    overflow: visible!important;
+    /*overflow: visible!important;*/
     width: 92%;
     padding: 1rem !important;
 }
+
 
 @media (min-width: 576px) {
     .top-products-text {
