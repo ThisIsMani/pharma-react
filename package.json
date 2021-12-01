@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/ThisIsMani/pharma-react/issues"
   },
-  "homepage": "https://github.com/ThisIsMani/pharma-react#readme"
+  "homepage": "https://github.com/ThisIsMani/pharma-react#readme",
+  "dependencies": {
+    "firebase-tools": "^9.23.0"
+  }
 }

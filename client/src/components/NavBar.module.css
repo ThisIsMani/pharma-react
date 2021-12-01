@@ -32,6 +32,7 @@
 }
 
 .navbar-container {
+    box-shadow: 0 0 10px rgb(0 0 0 / 50%);
     background: var(--contrast);
     /*background: rgb(29,40,54);*/
     /*background: linear-gradient(180deg, rgba(29,40,54,1) 0%, rgba(53,95,146,1) 100%);*/

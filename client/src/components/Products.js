@@ -1,6 +1,7 @@
 import {Fragment} from "react";
 import CardComponent from "./CardComponent";
 import {useParams} from "react-router-dom";
+import styles from "./Products.module.css";
 
 function getData(alphabet, allCards) {
     if (alphabet === 'all') {
@@ -24,8 +25,8 @@ function Products(props) {
     }
     return (
         <Fragment>
-            <div className='container d-flex flex-wrap'>
-                {cards.length !== 0 ? cards : <h2 className={"pt-3 pb-2 text-center col-12"}>No Products</h2>}
+            <div className={'container d-flex flex-wrap'}>
+                {cards.length !== 0 ? cards : <h2 className={"text-center col-12 "  + styles["no-products"]}>No Products</h2>}
             </div>
         </Fragment>
     )

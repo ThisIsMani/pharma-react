@@ -11,6 +11,7 @@ import SearchPage from "./pages/SearchPage";
 import ProductDetails from "./pages/ProductDetails";
 import ProductsPage from "./pages/ProductsPage";
 import ScrollToTop from "./components/ScrollToTop";
+import AboutPage from "./pages/AboutPage";
 
 function App() {
     return (
@@ -31,6 +32,9 @@ function App() {
                 </Route>
                 <Route path='/products'>
                     <ProductsPage/>
+                </Route>
+                <Route path='/about'>
+                    <AboutPage/>
                 </Route>
             </Switch>
             <Footer/>

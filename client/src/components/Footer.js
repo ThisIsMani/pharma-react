@@ -18,7 +18,7 @@ const Footer = () => {
                     </div>
                     <div className={styles.itemsbm + " col-12 col-md-6"}>
                         <h3 className={styles["footer-titles"]}><span>Office Address</span></h3>
-                        <p>Flat no. 401A</p>
+                        <p>Flat no. 401A, Block A</p>
                         <p>Sri Sai Krupa Apartments</p>
                         <p>Ramakrishna Nagar, Madinaguda</p>
                         <p>Miyapur</p>

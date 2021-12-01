@@ -53,7 +53,7 @@ function NavBarMain() {
                         <NavLink to="/products" activeClassName={styles.active} className={styles['nav-link'] + ' px-3'}>Our Products</NavLink>
                     </li>
                     <li className={styles['nav-item']}>
-                        <NavLink to="/to" activeClassName={styles.active} className={styles['nav-link'] + ' px-3'}>About</NavLink>
+                        <NavLink to="/about" activeClassName={styles.active} className={styles['nav-link'] + ' px-3'}>About</NavLink>
                     </li>
                 </ul>
             </div>
