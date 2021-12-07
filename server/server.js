@@ -12,6 +12,7 @@ let UUID = require('uuid-v4');
 
 const serviceAccountKey = require('./serviceAccountKey.json');
 const cookieParser = require('cookie-parser');
+const functions = require("firebase-functions");
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccountKey),
@@ -471,3 +472,5 @@ app.get('*', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server listening on ${PORT}`);
 });
+
+exports.app = functions.https.onRequest(app);
