@@ -12,7 +12,7 @@ function ProductNavbar(props) {
             {'ALL'}
         </NavLink>
     )
-    for (let ch = 48; ch <= 57; ch++) {
+    for (let ch = 49; ch <= 57; ch++) {
         navBar.push(
             <NavLink to={`/products/${String.fromCharCode(ch)}`} activeClassName={styles.active}
                      className={styles['nav-link'] + ' text-center m-1 col-1'}

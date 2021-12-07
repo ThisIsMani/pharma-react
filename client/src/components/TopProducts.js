@@ -7,6 +7,8 @@ import CardComponent from "./CardComponent";
 import {Fragment, useEffect, useState} from "react";
 import SwiperCore, {Navigation} from "swiper";
 import {Link} from "react-router-dom";
+import Firebase from "./Firebase";
+import {collection, getDocs} from "firebase/firestore/lite";
 
 
 SwiperCore.use(Navigation)
@@ -15,19 +17,37 @@ const TopProducts = () => {
     const [cards, setCards] = useState([]);
 
     useEffect(() => {
-        fetch(window.$server + '/topProducts')
-            .then((res) => res.json())
-            .then(data => {
-                let newCards = [];
-                for (let element of data.topProducts) {
-                     newCards.push(
-                        <SwiperSlide key={element['id']}>
-                            <CardComponent className={'swiper-slide'} data={element}/>
-                        </SwiperSlide>)
-                }
-                setCards(newCards)
-            })
-    }, [])
+        // fetch(window.$server + '/topProducts')
+        //     .then((res) => res.json())
+        //     .then(data => {
+        //         let newCards = [];
+        //         for (let element of data.topProducts) {
+        //              newCards.push(
+        //                 <SwiperSlide key={element['id']}>
+        //                     <CardComponent className={'swiper-slide'} data={element}/>
+        //                 </SwiperSlide>)
+        //         }
+        //         setCards(newCards)
+        //     })
+
+        async function getTopProducts() {
+            const topProductsCol = collection(Firebase, 'top-products');
+            const topProductsSnapshot = await getDocs(topProductsCol);
+            let newCards = [];
+            let topProductsData = topProductsSnapshot.docs.map(doc => doc.data().main);
+            topProductsData[0].forEach(element => {
+                let parsedElement = JSON.parse(element);
+                newCards.push(
+                    <SwiperSlide key={parsedElement['id']}>
+                        <CardComponent className={'swiper-slide'} data={parsedElement}/>
+                    </SwiperSlide>
+                )
+            });
+            setCards(newCards);
+        }
+
+        getTopProducts().catch(error => console.log(error));
+    }, []);
 
     return (
         <Fragment>

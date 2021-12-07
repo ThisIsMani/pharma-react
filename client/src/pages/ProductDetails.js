@@ -3,11 +3,13 @@ import {useParams} from "react-router-dom";
 import styles from './ProductDetails.module.css'
 import {useEffect, useState} from "react";
 import TopProducts from "../components/TopProducts";
+import Firebase from "../components/Firebase";
+import {doc, getDoc} from "firebase/firestore/lite";
 
 const ProductDetails = () => {
     const params = useParams();
     const id = params.id;
-    const [productDetails, setProductDetais] = useState({
+    const [productDetails, setProductDetails] = useState({
         mrp: '...',
         price: '...',
         weight: '...',
@@ -21,11 +23,18 @@ const ProductDetails = () => {
     });
 
     useEffect(() => {
-        fetch(window.$server + '/productDetails/' + id)
-            .then((res) => res.json())
-            .then(data => {
-                setProductDetais(data.productDetails);
-            })
+        // fetch(window.$server + '/productDetails/' + id)
+        //     .then((res) => res.json())
+        //     .then(data => {
+        //         setProductDetais(data.productDetails);
+        //     })
+
+        async function getAllProducts() {
+            const productDetailsCol = doc(Firebase, 'cards', id);
+            const productDetails = await getDoc(productDetailsCol);
+            setProductDetails(productDetails.data());
+        }
+        getAllProducts().catch(err => console.log(err));
     }, [id])
 
     return (
